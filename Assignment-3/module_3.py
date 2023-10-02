@@ -1,0 +1,40 @@
+import logic_gate as lg
+
+logic_gate = lg.LogicGate()
+
+logic_gate.and_gate(1, 0)
+logic_gate.print_output('AND')
+logic_gate.and_gate(0, 0)
+logic_gate.print_output('AND')
+logic_gate.and_gate(0, 1)
+logic_gate.print_output('AND')
+logic_gate.and_gate(1, 1)
+logic_gate.print_output('AND')
+
+logic_gate.or_gate(1, 0)
+logic_gate.print_output('OR')
+logic_gate.or_gate(0, 0)
+logic_gate.print_output('OR')
+logic_gate.or_gate(0, 1)
+logic_gate.print_output('OR')
+logic_gate.or_gate(1, 1)
+logic_gate.print_output('OR')
+
+
+logic_gate.nand_gate(1, 0)
+logic_gate.print_output('NAND')
+logic_gate.nand_gate(0, 0)
+logic_gate.print_output('NAND')
+logic_gate.nand_gate(0, 1)
+logic_gate.print_output('NAND')
+logic_gate.nand_gate(1, 1)
+logic_gate.print_output('NAND')
+
+logic_gate.nor_gate(1, 0)
+logic_gate.print_output('NOR')
+logic_gate.nor_gate(0, 0)
+logic_gate.print_output('NOR')
+logic_gate.nor_gate(0, 1)
+logic_gate.print_output('NOR')
+logic_gate.nor_gate(1, 1)
+logic_gate.print_output('NOR')
