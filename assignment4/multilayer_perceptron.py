@@ -11,13 +11,12 @@ class MultilyerPerceptron():
         self.network['w3'] = np.array([[0.5,0.4],[0.1254,0.2463]])
         self.network ['b3'] = np.array([0.2546164,0.9565465])
 
-    def sigmoid(s):
+    def sigmoid(self,s):
         return 1/(1 + np.exp(-s))
 
     def identity_function(self, s):
         return s
     
-
     def forward(self, x):
         w1,w2,w3 = self.network['w1'], self.network['w2'], self.network['w3']
         b1,b2,b3 = self.network['b1'], self.network['b2'], self.network['b3']
@@ -30,5 +29,4 @@ class MultilyerPerceptron():
 
         a3 = np.dot(z2,w3) + b3
         y = self.identity_function(a3)
-
         return y
