@@ -13,6 +13,9 @@ class MultilyerPerceptron():
 
     def sigmoid(self,s):
         return 1/(1 + np.exp(-s))
+    
+    def step(self, s):
+        return np.array(s>0).astype(int)
 
     def identity_function(self, s):
         return s
@@ -30,3 +33,15 @@ class MultilyerPerceptron():
         a3 = np.dot(z2,w3) + b3
         y = self.identity_function(a3)
         return y
+    
+if __name__ == '__main__':
+        mlp = MultilyerPerceptron()
+        y = mlp.forward(np.array([[0.25423, 0.1694464]]))
+        print("""/How to use the class /*'
+              Step 1: Import numpy and create an instance of the class
+              Step 2: Use the object to access the function like step, sigmoid, identity and forward
+              Step 3: Use numpy array to pass through called functions
+              Step 4: USe print statement to print the outut from the class
+        
+        """)
+        print(y)

@@ -143,3 +143,5 @@ if __name__ == '__main__':
     logic_gate.print_output('NOR')
     logic_gate.nor_gate(1, 1)
     logic_gate.print_output('NOR')
+
+    print('')
