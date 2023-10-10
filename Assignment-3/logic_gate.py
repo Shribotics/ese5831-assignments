@@ -144,4 +144,9 @@ if __name__ == '__main__':
     logic_gate.nor_gate(1, 1)
     logic_gate.print_output('NOR')
 
-    print('')
+    print("""/How to use the class LogicGate /*'
+              Step 1: Create an instance of the class
+              Step 2: Call the appropriate function and pass logic values
+              Step 3: For output call the appropriate function and pass the respective class name (AND,OR, NAND, NOR)
+        
+        """)
