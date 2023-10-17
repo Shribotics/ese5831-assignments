@@ -85,7 +85,16 @@ class Mnist():
         
         print(f'x[5000] is predicted as {y_hat} with {y_certainty*100}%. The label is {y_test[0000]}')
 
-mnist = Mnist()
 
-# Run 
-mnist.main()
+if __name__ == '__main__':
+    mnist = Mnist()
+    mnist.main()
+    print("""/How to use the class /*'
+              Step 1: Import numpy, pickel and gzip and create an instance of the class
+              Step 2: Initaialize te constructors and then load labels and images
+              Step 3: Use sigmoid and softmax functions
+              Step 4: Predict function used a neural network
+              Step 5: Initialize nneural network with pickle
+              Step 6: Main function for testing purpose
+        
+        """)

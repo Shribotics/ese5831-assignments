@@ -58,11 +58,11 @@ class Mnist:
         print(y)
         print(np.sum(y))
         if y_hat== self.digit:
-            print('Success')
+            print(f'Success: Image at the location {self.image_path} is predicted as {y_hat} with {y_certainty * 100}%. The expected label is {self.digit}')
         else:
-            print('Fail')
+            print(f'Fail: Image at the location {self.image_path} is predicted as {y_hat} with {y_certainty * 100}%. The expected label is {self.digit}')
 
-        print(f'Image is predicted as {y_hat} with {y_certainty * 100}%. The expected label is {self.digit}')
+        #print(f'Image at the location {self.image_path} is predicted as {y_hat} with {y_certainty * 100}%. The expected label is {self.digit}')
 
 
 
