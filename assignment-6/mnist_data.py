@@ -9,10 +9,10 @@ class MnistData():
     train_num = 60000
     test_num  = 10000
     key_file = {
-        'train_images': 'train-images-idx3-ubyte.gz',
-        'train_labels': 'train-labels-idx1-ubyte.gz',
-        'test_images':  't10k-images-idx3-ubyte.gz',
-        'test_labels':  't10k-labels-idx1-ubyte.gz'
+        'train_images': 'mnist/train-images-idx3-ubyte.gz',
+        'train_labels': 'mnist/train-labels-idx1-ubyte.gz',
+        'test_images':  'mnist/t10k-images-idx3-ubyte.gz',
+        'test_labels':  'mnist/t10k-labels-idx1-ubyte.gz'
     }
 
     def __init__(self):

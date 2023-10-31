@@ -1,3 +1,6 @@
+import numpy as np
+import pickle
+from two_layer_net import TwoLayerNet
 from mnist_data import MnistData
 
 mnist_data = MnistData()
@@ -9,7 +12,7 @@ print(batch_mask)
 x_t[batch_mask]
 
 # hyper parameters
-iters_num = 10000 
+iters_num = 50
 train_size = x_train.shape[0]
 batch_size = 64
 learning_rate = 0.01
@@ -21,6 +24,7 @@ net = TwoLayerNet(input_size=input_size, hidden_size=100, output_size=10)
 
 for i in range(iters_num):
     # mini-batch
+    print ("epo", i)
     batch_mask = np.random.choice(train_size, batch_size)
     x_batch = x_train[batch_mask]
     t_batch = t_train[batch_mask]
@@ -31,3 +35,6 @@ for i in range(iters_num):
 
 loss = net.loss(x_batch, t_batch)
 train_loss.append(loss)
+
+with open("shrikant_mnist_nn_model.pkl","wb") as f:
+    pickle.dump(net, f)

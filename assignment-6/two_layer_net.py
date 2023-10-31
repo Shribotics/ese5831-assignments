@@ -38,5 +38,3 @@ class TwoLayerNet:
         grads['b2'] = common.numerical_gradient(loss_w, self.params['b2'])
 
         return grads
-    
-    
