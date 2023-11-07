@@ -2,6 +2,7 @@ import tensorflow as tf
 from tensorflow import keras
 from keras import layers
 from keras.datasets import mnist
+from PIL import I
 from keras.models import load_model
 
 
@@ -49,7 +50,6 @@ class MnistKeras:
         metrics = model.evaluate(self.test_images, self.test_data)
         print(f"Accuracy: {metrics[1]*100}% \t Loss: {metrics[0]}")
 
-    def predict(self, x):
-        predictions = self.predict(x)
-
+    def predict(self, img):
+        predictions = self.loaded_model.predict(img)
         return predictions
