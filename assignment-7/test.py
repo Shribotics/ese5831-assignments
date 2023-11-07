@@ -7,7 +7,7 @@ if __name__ == "__main__":
     (_, _), (x_test, y_test) = mnist_keras.load_data()
 
     # Load the trained model
-    model = mnist_keras.load("model_your_first_lastname.h5")
+    model = mnist_keras.load("shrikant_mnist_nn_model.keras")
 
     # Test the model
     mnist_keras.test(model)
