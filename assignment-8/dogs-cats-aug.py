@@ -38,7 +38,10 @@ class DogsCats:
 
     def make_datasets(self, train_path, validation_path, test_path, batch_size=32, img_size=(200, 180)):
         # Function to create dataset directories
+        
         def make_dataset(subset_name, start_idx, end_idx):
+            data_from_kaggle = "data-from-kaggle/train/train"
+            data_dirname = "dogs-vs-cats"
             for category in {"cat", "dog"}:
                 subset_path = os.path.join(data_dirname, subset_name, category)
                 os.makedirs(subset_path, exist_ok=True)
@@ -94,35 +97,5 @@ class DogsCats:
         predictions = loaded_model.predict(img_array)
         return predictions
 
-# Set up paths
-data_from_kaggle = "data-from-kaggle/train/train"
-data_dirname = "dogs-vs-cats"
-train_path = os.path.join(data_dirname, "train")
-validation_path = os.path.join(data_dirname, "validation")
-test_path = os.path.join(data_dirname, "test")
 
-# Create DogsCats instance
-dogs_cats = DogsCats()
 
-# Make datasets
-train_dataset, validation_dataset, test_dataset = dogs_cats.make_datasets(train_path, validation_path, test_path)
-
-# Compile the model
-dogs_cats.compile()
-
-# Fit the model
-callbacks = [keras.callbacks.ModelCheckpoint(
-    filepath="model-from-scratch",
-    save_best_only=False,
-    monitor="val_loss"
-)]
-history = dogs_cats.fit(train_dataset, validation_dataset, epochs=10, callbacks=callbacks)
-
-# Save the model
-model_name = 'dogs_cats_model_aug.pb'
-dogs_cats.model.save(model_name)
-
-# Example prediction
-file_name = 'C:\\Users\\pawar\\.conda\\envs\\ece5831-2023\\ece5831-assignments-2023\\ece5831-assignments\\ese5831-assignments\\assignment-8\\dogs-vs-cats\\test\\dog\\dog.12480.jpg'
-predictions = dogs_cats.predict(model_name, file_name)
-print(predictions)

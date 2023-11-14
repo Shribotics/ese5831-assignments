@@ -34,6 +34,8 @@ class DogsCats:
     def make_datasets(self, train_path, validation_path, test_path, batch_size=32, img_size=(200, 180)):
         # Function to create dataset directories
         def make_dataset(subset_name, start_idx, end_idx):
+            data_from_kaggle = "data-from-kaggle/train/train"
+            data_dirname = "dogs-vs-cats"
             for category in {"cat", "dog"}:
                 subset_path = os.path.join(data_dirname, subset_name, category)
                 os.makedirs(subset_path, exist_ok=True)
@@ -59,13 +61,9 @@ class DogsCats:
     def create_dataset(self, directory, batch_size, img_size):
         dataset = image_dataset_from_directory(
             directory,
-            labels='inferred',
             batch_size=batch_size,
             image_size=img_size,
-            shuffle=True,
-            seed=42,
-            validation_split=0.2,
-            subset='training'
+            shuffle=True
         )
         return dataset
 
@@ -86,42 +84,12 @@ class DogsCats:
         # Preprocess the image
         img = image.load_img(file_name, target_size=(200, 180))
         img_array = image.img_to_array(img)
-        img_array = img_array.reshape((3,) + img_array.shape)
-        img_array /= 255.0  # Normalize the image
-
+        img_array = img_array.reshape(1,200,180,3)
+        # img_array /= 255.0  # Normalize the image
         # Make predictions
         predictions = loaded_model.predict(img_array)
         return predictions
 
 # Set up paths
-data_from_kaggle = "data-from-kaggle/train/train"
-data_dirname = "dogs-vs-cats"
-train_path = os.path.join(data_dirname, "train")
-validation_path = os.path.join(data_dirname, "validation")
-test_path = os.path.join(data_dirname, "test")
 
-# Create DogsCats instance
-dogs_cats = DogsCats()
 
-# Make datasets
-train_dataset, validation_dataset, test_dataset = dogs_cats.make_datasets(train_path, validation_path, test_path)
-
-# Compile the model
-dogs_cats.compile()
-
-# Fit the model
-callbacks = [keras.callbacks.ModelCheckpoint(
-    filepath="model-from-scratch",
-    save_best_only=False,
-    monitor="val_loss"
-)]
-history = dogs_cats.fit(train_dataset, validation_dataset, epochs=10, callbacks=callbacks)
-
-# Save the model
-model_name = 'dogs_cats_model.pb'
-dogs_cats.model.save(model_name)
-
-# Example prediction
-file_name = 'dog-vs-cat/test/dog.12491.jpg'
-predictions = dogs_cats.predict(model_name, file_name)
-print(predictions)
