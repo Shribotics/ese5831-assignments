@@ -33,7 +33,6 @@ class DogsCatsPre:
         self.model.compile(loss="binary_crossentropy", optimizer="rmsprop", metrics=["accuracy"])
 
     def make_datasets(self, train_path, validation_path, test_path, batch_size=32, img_size=(200, 180)):
-        # Function to create dataset directories
         def make_dataset(subset_name, start_idx, end_idx):
             data_from_kaggle = "data-from-kaggle/train/train"
             data_dirname = "dogs-vs-cats"
@@ -61,7 +60,7 @@ class DogsCatsPre:
       
 
     def create_dataset(self, directory, batch_size, img_size):
-        # Modified create_dataset function to include VGG16 preprocessing
+    
         dataset = image_dataset_from_directory(
             directory,
             batch_size=batch_size,
