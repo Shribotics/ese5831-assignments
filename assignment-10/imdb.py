@@ -57,3 +57,6 @@ class Imdb:
 
     def save_model(self, filename='model_imdb'):
         self.model.save(filename)
+
+    def predict(self, x_data):
+        return self.model.predict(x_data)
